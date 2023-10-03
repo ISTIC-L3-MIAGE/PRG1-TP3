@@ -40,7 +40,7 @@ public class InsertionPair {
 		// Recherche de value dans array
 		int i = 0;
 		while (i < size && array[i].lessOrEquals(value)) {
-			if (array[i] == value) { return false; }
+			if (array[i].equals(value)) { return false; }
 			i++;
 		}
 		
@@ -73,7 +73,7 @@ public class InsertionPair {
 				i++;
 			}
 		} catch (NumberFormatException e) {
-			System.out.println("\nL'une vos entrée n'est pas un entier, elle n'a pas été insérée.");
+			System.out.println("\nATTENTION: L'une vos entrées n'est pas un entier, elle n'a pas été insérée.");
 		}
 	}
 }

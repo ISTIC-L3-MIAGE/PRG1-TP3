@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Pair {
 	private int x, y;
@@ -12,9 +13,17 @@ public class Pair {
 		this.y = y;
 	}
 	
-	public Pair(String[] pairStrTab) {
-		this.x = Integer.parseInt(pairStrTab[0]);
-		this.y = Integer.parseInt(pairStrTab[1]);
+	public Pair(String[] XY) {
+		initWithArray(XY);
+	}
+	
+	private void initWithArray(String[] XY) {
+		try {
+			x = Integer.parseInt(XY[0]);
+			y = Integer.parseInt(XY[1]);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("\nATTENTION: Le tableau " + Arrays.toString(XY) + " utilisé pour contruire la pair n'est pas valide.");
+		}
 	}
 	
 	public int getX() {

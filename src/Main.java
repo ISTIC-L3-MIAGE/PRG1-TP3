@@ -44,7 +44,14 @@ public class Main {
 				new Pair(2,2),
 				new Pair(10,4),
 				new Pair(8,1),
-				new Pair(1,1)
+				new Pair(1,1),
+				new Pair(3,0),
+				new Pair(-1,1),
+				new Pair(2,7),
+				new Pair(7,2),
+				new Pair(4,5),
+				new Pair(4,4),
+				new Pair(4,3),
 		};
 		for (int i = 0; i < pairs.length; i++) {
 			System.out.println(pairs[i] + " est inséré ? -> " + insertPair.insert(pairs[i]));
@@ -61,14 +68,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		// Test InsertionInteger
-		testToArrayII();
-		testInsertII();
-		testCreateArrayII();
+		//testToArrayII();
+		//testInsertII();
+		//testCreateArrayII();
 		
 		// Test InsertionPair
-		//testToArrayIP();
-		//testInsertIP();
-		//testCreateArrayIP();
+		testToArrayIP();
+		testInsertIP();
+		testCreateArrayIP();
 	}
 
 }
