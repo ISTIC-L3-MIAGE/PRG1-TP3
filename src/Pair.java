@@ -40,5 +40,10 @@ public class Pair {
 	public boolean lessThanZero() {
 		return x <= 0 || y <= 0;
 	}
+	
+	@Override
+	public String toString() {
+		return "(" + x + "," + y + ")";
+	}
 
 }

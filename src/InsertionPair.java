@@ -73,8 +73,9 @@ public class InsertionPair {
 	 */
 	public void createArray(Scanner scanner) {
 		String userInput = "", totalUserInput = "";
+		System.out.println("Entrez une suite paire d'entiers à insérer et -1 pour arrêter: ");
+
 		while (!userInput.equals("-1")) {
-			System.out.print("Entrez une paire d'entiers à insérer et -1 pour arrêter: ");
 			userInput = scanner.nextLine();
 			totalUserInput += userInput + ";";
 		}
