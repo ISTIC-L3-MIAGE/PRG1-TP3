@@ -1,12 +1,12 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class InsertionInteger {
+public class InsertionPair {
 	private static final int SIZE_MAX = 10;
 	private int size; // 0 <= size <= SIZE_MAX
-	private int[] array = new int[SIZE_MAX];
+	private Pair[] array = new Pair[SIZE_MAX];
 	
-	public InsertionInteger() {}
+	public InsertionPair() {}
 	
 	public int getSize() {
 		return size;
@@ -14,7 +14,7 @@ public class InsertionInteger {
 	
 	public void reset() {
 		size = 0;
-		array = new int[SIZE_MAX];
+		array = new Pair[SIZE_MAX];
 	}
 	
 	@Override
@@ -28,8 +28,8 @@ public class InsertionInteger {
 	/*
 	 * @return copie de la partie remplie du tableau
 	 */
-	public int[] toArray() {
-		int[] copy = new int[size];
+	public Pair[] toArray() {
+		Pair[] copy = new Pair[size];
 		for (int i = 0; i < size; i++) {
 			copy[i] = array[i];
 		}
@@ -44,20 +44,20 @@ public class InsertionInteger {
 	 * @return false si value appartient à array[0..size-1] ou si array est complètement rempli;
 	 * 			true si value n'appartient pas à array[0..size-1]
 	 */
-	public boolean insert(int value) {
+	public boolean insert(Pair value) {
 		// Cas particulier: array est complètement rempli ou value <= 0
-		if (size == SIZE_MAX || value <= 0) { return false; }
+		if (size == SIZE_MAX || value.lessThanZero()) { return false; }
 		
 		// Parcours du tableau
 		int i = 0;
-		while (i < size && array[i] <= value) {
-			if (array[i] == value) { return false; }
+		while (i < size && array[i].lessOrEquals(value)) {
+			if (array[i].equals(value)) { return false; }
 			i++;
 		}
 		
 		// Insertion et tri si value n'a pas été trouvé dans array
 		for (int j = i; j <= size; j++) {
-			int temp = array[j];
+			Pair temp = array[j];
 			array[j] = value;
 			value = temp;
 		}
@@ -72,13 +72,19 @@ public class InsertionInteger {
 	 * @param scanner
 	 */
 	public void createArray(Scanner scanner) {
-		System.out.print("Entrez la séquence de nombre entiers à insérer: ");
-		String[] entiers = scanner.nextLine().split(" ");
+		String userInput = "", totalUserInput = "";
+		while (!userInput.equals("-1")) {
+			System.out.print("Entrez une paire d'entiers à insérer et -1 pour arrêter: ");
+			userInput = scanner.nextLine();
+			totalUserInput += userInput + ";";
+		}
 		
 		int i = 0;
+		String[] pairs = totalUserInput.split(";");
 		try {
-			while (i < entiers.length && !entiers[i].equals("-1")) {
-				insert(Integer.parseInt(entiers[i]));
+			while (i < pairs.length && !pairs[i].equals("-1")) {
+				String[] pairStr = pairs[i].split(" ");
+				insert(new Pair(pairStr));
 				i++;
 			}
 		} catch (NumberFormatException e) {
