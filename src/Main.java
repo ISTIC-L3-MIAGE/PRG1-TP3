@@ -61,14 +61,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		// Test InsertionInteger
-		//testToArrayII();
-		//testInsertII();
-		//testCreateArray();
+		testToArrayII();
+		testInsertII();
+		testCreateArrayII();
 		
 		// Test InsertionPair
 		//testToArrayIP();
 		//testInsertIP();
-		testCreateArrayIP();
+		//testCreateArrayIP();
 	}
 
 }

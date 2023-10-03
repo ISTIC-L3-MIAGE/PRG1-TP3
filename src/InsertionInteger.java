@@ -25,9 +25,6 @@ public class InsertionInteger {
 		return str;
 	}
 	
-	/*
-	 * @return copie de la partie remplie du tableau
-	 */
 	public int[] toArray() {
 		int[] copy = new int[size];
 		for (int i = 0; i < size; i++) {
@@ -36,19 +33,11 @@ public class InsertionInteger {
 		return copy;
 	}
 	
-	/*
-	 * Insert la valeur "value" dans le tableau "array" en
-	 * le gardant trié par ordre croissant.
-	 * 
-	 * @param value : valeur à insérer
-	 * @return false si value appartient à array[0..size-1] ou si array est complètement rempli;
-	 * 			true si value n'appartient pas à array[0..size-1]
-	 */
 	public boolean insert(int value) {
 		// Cas particulier: array est complètement rempli ou value <= 0
 		if (size == SIZE_MAX || value <= 0) { return false; }
 		
-		// Parcours du tableau
+		// Recherche de value dans array
 		int i = 0;
 		while (i < size && array[i] <= value) {
 			if (array[i] == value) { return false; }
@@ -56,23 +45,18 @@ public class InsertionInteger {
 		}
 		
 		// Insertion et tri si value n'a pas été trouvé dans array
-		for (int j = i; j <= size; j++) {
-			int temp = array[j];
-			array[j] = value;
+		while (i <= size) {
+			int temp = array[i];
+			array[i] = value;
 			value = temp;
+			i++;
 		}
 		size += 1;
 		return true;
 	}
 	
-	/*
-	 * Rempli le tableau array par ordre croissant en utilisant
-	 * la méthode insert() avec les valeurs lues par scanner.
-	 * 
-	 * @param scanner
-	 */
 	public void createArray(Scanner scanner) {
-		System.out.print("Entrez la séquence de nombre entiers à insérer: ");
+		System.out.println("Entrez la séquence de nombre entiers à insérer: ");
 		String[] entiers = scanner.nextLine().split(" ");
 		
 		int i = 0;
@@ -82,7 +66,7 @@ public class InsertionInteger {
 				i++;
 			}
 		} catch (NumberFormatException e) {
-			System.out.println("\nL'une vos entrée n'est pas un entier, elle n'a pas été insérée.");
+			System.out.println("\nATTENTION: L'une vos entrée n'est pas un entier, elle n'a pas été insérée.");
 		}
 	}
 }

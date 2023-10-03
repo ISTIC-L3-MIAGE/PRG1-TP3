@@ -25,9 +25,6 @@ public class InsertionPair {
 		return str;
 	}
 	
-	/*
-	 * @return copie de la partie remplie du tableau
-	 */
 	public Pair[] toArray() {
 		Pair[] copy = new Pair[size];
 		for (int i = 0; i < size; i++) {
@@ -36,41 +33,28 @@ public class InsertionPair {
 		return copy;
 	}
 	
-	/*
-	 * Insert la valeur "value" dans le tableau "array" en
-	 * le gardant trié par ordre croissant.
-	 * 
-	 * @param value : valeur à insérer
-	 * @return false si value appartient à array[0..size-1] ou si array est complètement rempli;
-	 * 			true si value n'appartient pas à array[0..size-1]
-	 */
 	public boolean insert(Pair value) {
 		// Cas particulier: array est complètement rempli ou value <= 0
 		if (size == SIZE_MAX || value.lessThanZero()) { return false; }
 		
-		// Parcours du tableau
+		// Recherche de value dans array
 		int i = 0;
 		while (i < size && array[i].lessOrEquals(value)) {
-			if (array[i].equals(value)) { return false; }
+			if (array[i] == value) { return false; }
 			i++;
 		}
 		
 		// Insertion et tri si value n'a pas été trouvé dans array
-		for (int j = i; j <= size; j++) {
-			Pair temp = array[j];
-			array[j] = value;
+		while (i <= size) {
+			Pair temp = array[i];
+			array[i] = value;
 			value = temp;
+			i++;
 		}
 		size += 1;
 		return true;
 	}
 	
-	/*
-	 * Rempli le tableau array par ordre croissant en utilisant
-	 * la méthode insert() avec les valeurs lues par scanner.
-	 * 
-	 * @param scanner
-	 */
 	public void createArray(Scanner scanner) {
 		String userInput = "", totalUserInput = "";
 		System.out.println("Entrez une suite paire d'entiers à insérer et -1 pour arrêter: ");
