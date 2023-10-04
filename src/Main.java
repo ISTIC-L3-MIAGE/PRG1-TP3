@@ -65,6 +65,11 @@ public class Main {
 		insertPair.createArray(new Scanner(System.in));
 		insertPair.toString();
 	}
+	//Test Suite Fourmis
+	public static void testFourmis() {
+		System.out.println(Fourmis.next("1211"));
+		
+	}
 
 	public static void main(String[] args) {
 		// Test InsertionInteger
@@ -73,9 +78,12 @@ public class Main {
 		//testCreateArrayII();
 		
 		// Test InsertionPair
+		//Test Suite Fourmis
+
 		testToArrayIP();
 		testInsertIP();
 		testCreateArrayIP();
+		testFourmis();
 	}
 
 }
