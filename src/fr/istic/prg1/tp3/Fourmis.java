@@ -1,6 +1,18 @@
+package fr.istic.prg1.tp3;
+
+/**
+ * @author Antonella Atterey <antonella.atterey@etudiant.univ-rennes1.fr>
+ * @author Ezan Tahi <ezan.tahi@etudiant.univ-rennes1.fr>
+ * @class L3 MIAGE 2023/2024
+ */
 
 public class Fourmis {
 
+	/**
+	 * @param ui un terme de la suite des fourmis
+	 * @pre ui.length() > 0
+	 * @return le terme suivant de la suite des fourmis
+	 */
 	public static String next(String ui) {
 		String resultat = "";
 		// On compte la plus grande suite d'un nombre

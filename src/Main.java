@@ -12,9 +12,9 @@ public class Main {
 		System.out.println(" ");
 
 	}
-	
+
 	public static void testInsertII() {
-		int[] entiers = {5, 2, 6, 8, 1, -1, 2, 17, 0, 3, 7, 4, 99, 98, 99};
+		int[] entiers = { 5, 2, 6, 8, 1, -1, 2, 17, 0, 3, 7, 4, 99, 98, 99 };
 		for (int i = 0; i < entiers.length; i++) {
 			System.out.println(entiers[i] + " est inséré ? -> " + insertInt.insert(entiers[i]));
 			insertInt.toString();
@@ -27,32 +27,18 @@ public class Main {
 		insertInt.createArray(new Scanner(System.in));
 		insertInt.toString();
 	}
-	
+
 	// Tests pour InsertionInteger
 	public static void testToArrayIP() {
 		System.out.println(Arrays.toString(insertPair.toArray()));
 		System.out.println("size -> " + insertPair.getSize());
 		System.out.println(" ");
-
 	}
-	
+
 	public static void testInsertIP() {
-		Pair[] pairs = {
-				new Pair(3,8),
-				new Pair(1,4),
-				new Pair(3,8),
-				new Pair(2,2),
-				new Pair(10,4),
-				new Pair(8,1),
-				new Pair(1,1),
-				new Pair(3,0),
-				new Pair(-1,1),
-				new Pair(2,7),
-				new Pair(7,2),
-				new Pair(4,5),
-				new Pair(4,4),
-				new Pair(4,3),
-		};
+		Pair[] pairs = { new Pair(3, 8), new Pair(1, 4), new Pair(3, 8), new Pair(2, 2), new Pair(10, 4),
+				new Pair(8, 1), new Pair(1, 1), new Pair(3, 0), new Pair(-1, 1), new Pair(2, 7), new Pair(7, 2),
+				new Pair(4, 5), new Pair(4, 4), new Pair(4, 3) };
 		for (int i = 0; i < pairs.length; i++) {
 			System.out.println(pairs[i] + " est inséré ? -> " + insertPair.insert(pairs[i]));
 			insertPair.toString();
@@ -65,24 +51,35 @@ public class Main {
 		insertPair.createArray(new Scanner(System.in));
 		insertPair.toString();
 	}
-	//Test Suite Fourmis
+
+	public static void testCreateArrayFromFileIP() {
+		insertPair.reset();
+		insertPair.createArrayFromFile();
+		insertPair.toString();
+	}
+
+	// Test Suite Fourmis
 	public static void testFourmis() {
-		System.out.println(Fourmis.next("1211"));
-		
+		String ui = "1";
+		for (int i = 0; i < 10; i++) {
+			System.out.println("u" + i + " = " + ui);
+			ui = Fourmis.next(ui);
+		}
 	}
 
 	public static void main(String[] args) {
 		// Test InsertionInteger
-		//testToArrayII();
-		//testInsertII();
-		//testCreateArrayII();
-		
-		// Test InsertionPair
-		//Test Suite Fourmis
+		// testToArrayII();
+		// testInsertII();
+		// testCreateArrayII();
 
-		testToArrayIP();
-		testInsertIP();
-		testCreateArrayIP();
+		// Test InsertionPair
+		// testToArrayIP();
+		// testInsertIP();
+		// testCreateArrayIP();
+		// testCreateArrayFromFileIP();
+
+		// Test Suite Fourmis
 		testFourmis();
 	}
 
