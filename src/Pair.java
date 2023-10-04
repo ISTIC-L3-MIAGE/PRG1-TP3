@@ -17,13 +17,34 @@ public class Pair {
 		initWithArray(XY);
 	}
 	
+	/*
+	 * Construis une paire d'entiers à partir d'un tableau de chaines
+	 * de caractères en se servant des deux premières valeurs.
+	 */
 	private void initWithArray(String[] XY) {
 		try {
 			x = Integer.parseInt(XY[0]);
 			y = Integer.parseInt(XY[1]);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("\nATTENTION: Le tableau " + Arrays.toString(XY) + " utilisé pour contruire la pair n'est pas valide.");
+		} catch (NumberFormatException e) {
+			System.out.println("\nATTENTION: L'une vos entrées n'est pas un entier, elle n'a pas été insérée.");
 		}
+	}
+	
+	/*
+	 * Crée un tableau de Pair à partir d'un tableau de pairString.
+	 * 
+	 * @param array : le tableau de String contenant des paires sous
+	 * 					la forme ["3 8", "1 4", "3 8", "1 3"]
+	 * @return un tableau de Pair
+	 */
+	public static Pair[] fromStrArray(String[] array) {
+		Pair[] pairs = new Pair[array.length];
+		for (int i = 0; i < array.length; i++) {
+			pairs[i] = new Pair(array[i].split(" "));
+		}
+		return pairs;
 	}
 	
 	public int getX() {

@@ -65,7 +65,7 @@ public class InsertionPair {
 		}
 		
 		int i = 0;
-		String[] pairs = totalUserInput.split(";");
+		String[] pairs = totalUserInput.replace("-1;", "").split(";");
 		try {
 			while (i < pairs.length && !pairs[i].equals("-1")) {
 				String[] pairStr = pairs[i].split(" ");
@@ -74,6 +74,13 @@ public class InsertionPair {
 			}
 		} catch (NumberFormatException e) {
 			System.out.println("\nATTENTION: L'une vos entrées n'est pas un entier, elle n'a pas été insérée.");
+		}
+	}
+	
+	public void createArrayFromFile() {
+		Pair[] pairs = Pair.fromStrArray(FileManager.readFile());
+		for (int i = 0; i < pairs.length; i++) {
+			insert(pairs[i]);
 		}
 	}
 }

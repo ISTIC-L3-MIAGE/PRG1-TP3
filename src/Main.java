@@ -65,6 +65,12 @@ public class Main {
 		insertPair.createArray(new Scanner(System.in));
 		insertPair.toString();
 	}
+	
+	public static void testCreateArrayFromFileIP() {
+		insertPair.reset();
+		insertPair.createArrayFromFile();
+		insertPair.toString();
+	}
 
 	public static void main(String[] args) {
 		// Test InsertionInteger
@@ -73,9 +79,10 @@ public class Main {
 		//testCreateArrayII();
 		
 		// Test InsertionPair
-		testToArrayIP();
-		testInsertIP();
-		testCreateArrayIP();
+		//testToArrayIP();
+		//testInsertIP();
+		//testCreateArrayIP();
+		testCreateArrayFromFileIP();
 	}
 
 }
