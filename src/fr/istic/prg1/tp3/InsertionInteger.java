@@ -1,8 +1,3 @@
-package fr.istic.prg1.tp3;
-
-import java.util.Arrays;
-import java.util.Scanner;
-
 /**
  * @author Antonella Atterey <antonella.atterey@etudiant.univ-rennes1.fr>
  * @author Ezan Tahi <ezan.tahi@etudiant.univ-rennes1.fr>
@@ -19,6 +14,11 @@ import java.util.Scanner;
  * 
  *        Exemple. En entrée : 3 8 1 4 3 2 1 3 -1 ==> En sortie : 1 2 3 4 8
  */
+
+package fr.istic.prg1.tp3;
+
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class InsertionInteger {
 
@@ -55,14 +55,9 @@ public class InsertionInteger {
 	public void createArray(Scanner scanner) {
 		int entier = scanner.nextInt();
 		while (entier != END_MARKER) {
-			try {
-				insert(entier);
-				entier = scanner.nextInt();
-			} catch (NumberFormatException e) {
-				System.out.println("\nATTENTION: L'une vos entrée n'est pas un entier, elle n'a pas été insérée.");
-			}
+			insert(entier);
+			entier = scanner.nextInt();
 		}
-		
 	}
 
 	/**
@@ -88,24 +83,22 @@ public class InsertionInteger {
 	 */
 	public boolean insert(int value) {
 		// Cas particulier: array est complètement rempli ou value <= 0
-		if (size == SIZE_MAX || value <= 0) {
+		if (size == SIZE_MAX || value < 0) {
 			return false;
 		}
 
 		// Recherche de value dans array
 		int i = 0;
-		while (i < size && array[i] <= value) {
+		while (i <= size) {
 			if (array[i] == value) {
 				return false;
 			}
-			i++;
-		}
-
-		// Insertion et tri si value n'a pas été trouvé dans array
-		while (i <= size) {
-			int temp = array[i];
-			array[i] = value;
-			value = temp;
+			// Insertion et tri si value n'a pas été trouvé dans array
+			if (array[i] > value || i == size) {
+				int temp = array[i];
+				array[i] = value;
+				value = temp;
+			}
 			i++;
 		}
 		size += 1;

@@ -1,3 +1,10 @@
+/**
+ * @author Antonella Atterey <antonella.atterey@etudiant.univ-rennes1.fr>
+ * @author Ezan Tahi <ezan.tahi@etudiant.univ-rennes1.fr>
+ * @class L3 MIAGE 2023/2024
+ */
+
+package fr.istic.prg1.tp3;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,7 +20,7 @@ abstract class FileManager {
 	 * 
 	 * @return flux de lecture du fichier
 	 */
-	private static InputStream openInputFile() {
+	public static InputStream openInputFile() {
 		InputStream fileStream = null;
 		while (fileStream == null) {
 			System.out.print("Saisissez le nom du fichier: ");
@@ -26,24 +33,5 @@ abstract class FileManager {
 			}
 		}
 		return fileStream;
-	}
-	
-	/*
-	 * Lis les pairs contenu dans un fichier.
-	 * 
-	 * @return un tableau de pairs sous forme de chaine de caractère
-	 * 			Exemple: ["3 8", "1 4", "3 8", "1 3"]
-	 */
-	public static String[] readFile() {
-		InputStream file = openInputFile();
-		Scanner scan = new Scanner(file);
-		String currentInput = "", totalInput = "";
-		do {
-			currentInput = scan.nextLine();
-			totalInput += currentInput + ";";
-		} while (!currentInput.equals("-1"));
-		scan.close();
-		return totalInput.replace("-1;", "").split(";");
-		
 	}
 }

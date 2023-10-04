@@ -1,10 +1,10 @@
-package fr.istic.prg1.tp3;
-
 /**
  * @author Antonella Atterey <antonella.atterey@etudiant.univ-rennes1.fr>
  * @author Ezan Tahi <ezan.tahi@etudiant.univ-rennes1.fr>
  * @class L3 MIAGE 2023/2024
  */
+
+package fr.istic.prg1.tp3;
 
 public class Fourmis {
 

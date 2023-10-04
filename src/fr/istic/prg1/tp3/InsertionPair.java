@@ -1,8 +1,3 @@
-package fr.istic.prg1.tp3;
-
-import java.util.Arrays;
-import java.util.Scanner;
-
 /**
  * @author Antonella Atterey <antonella.atterey@etudiant.univ-rennes1.fr>
  * @author Ezan Tahi <ezan.tahi@etudiant.univ-rennes1.fr>
@@ -20,6 +15,11 @@ import java.util.Scanner;
  * 
  *        En entrée : 3 8 1 4 3 8 1 3 -1 ==> En sortie : [1 3] [1 4] [3 8]
  */
+
+package fr.istic.prg1.tp3;
+
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class InsertionPair {
 
@@ -54,6 +54,23 @@ public class InsertionPair {
 	 * @param scanner
 	 */
 	public void createArray(Scanner scanner) {
+		int e1 = scanner.nextInt(), e2 = scanner.nextInt();
+		while (e1 != END_MARKER && e2 != END_MARKER) {
+			insert(new Pair(e1, e2));
+			e1 = scanner.nextInt();
+			if (e1 != END_MARKER) {
+				e2 = scanner.nextInt();
+			}
+		}
+	}
+	
+	/**
+	 * array est rempli, par ordre croissant, en utilisant la fonction insert, avec
+	 * les valeurs lues dans le fichier dont le nom a été saisi au clavier.
+	 */
+	public void createArrayFromFile() {
+		Scanner scanner = new Scanner(FileManager.openInputFile());
+		createArray(scanner);
 	}
 
 	/**
@@ -76,18 +93,16 @@ public class InsertionPair {
 
 		// Recherche de value dans array
 		int i = 0;
-		while (i < size && (array[i].compareTo(pair) == -1 || array[i].equals(pair))) {
-			if (array[i].equals(pair)) {
+		while (i <= size) {
+			if (pair.equals(array[i])) {
 				return false;
 			}
-			i++;
-		}
-
-		// Insertion et tri si value n'a pas été trouvé dans array
-		while (i <= size) {
-			Pair temp = array[i];
-			array[i] = pair;
-			pair = temp;
+			// Insertion et tri si value n'a pas été trouvé dans array
+			if ((array[i] != null && array[i].compareTo(pair) > 0) || i == size) {
+				Pair temp = array[i];
+				array[i] = pair;
+				pair = temp;
+			}
 			i++;
 		}
 		size += 1;
