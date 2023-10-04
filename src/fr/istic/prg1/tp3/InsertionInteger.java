@@ -53,18 +53,16 @@ public class InsertionInteger {
 	 * @param scanner
 	 */
 	public void createArray(Scanner scanner) {
-		int i = 0;
-		try {
-			int entier = scanner.nextInt();
-			while (entier != END_MARKER) {
-				System.out.println(entier);
-
+		int entier = scanner.nextInt();
+		while (entier != END_MARKER) {
+			try {
 				insert(entier);
-				i++;
+				entier = scanner.nextInt();
+			} catch (NumberFormatException e) {
+				System.out.println("\nATTENTION: L'une vos entrée n'est pas un entier, elle n'a pas été insérée.");
 			}
-		} catch (NumberFormatException e) {
-			System.out.println("\nATTENTION: L'une vos entrée n'est pas un entier, elle n'a pas été insérée.");
 		}
+		
 	}
 
 	/**
