@@ -18,6 +18,7 @@
 package fr.istic.prg1.tp3;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InsertionInteger {
@@ -53,10 +54,14 @@ public class InsertionInteger {
 	 * @param scanner
 	 */
 	public void createArray(Scanner scanner) {
-		int entier = scanner.nextInt();
-		while (entier != END_MARKER) {
-			insert(entier);
-			entier = scanner.nextInt();
+		try {
+			int entier = scanner.nextInt();
+			while (entier != END_MARKER) {
+				insert(entier);
+				entier = scanner.nextInt();
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("\nATTENTION: L'une de vos saisies n'est pas un entier.");
 		}
 	}
 

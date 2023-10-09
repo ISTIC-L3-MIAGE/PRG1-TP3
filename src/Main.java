@@ -12,13 +12,13 @@ public class Main {
 	static InsertionPair insertPair = new InsertionPair();
 	
 	// Test Suite Fourmis
-		public static void testFourmis() {
-			String ui = "1";
-			for (int i = 0; i < 10; i++) {
-				System.out.println("u" + i + " = " + ui);
-				ui = Fourmis.next(ui);
-			}
+	public static void testFourmis() {
+		String ui = "1";
+		for (int i = 0; i < 10; i++) {
+			System.out.println("u" + i + " = " + ui);
+			ui = Fourmis.next(ui);
 		}
+	}
 
 	// Tests pour InsertionInteger
 	public static void testInsertII() {
@@ -78,16 +78,19 @@ public class Main {
 	// Main
 	public static void main(String[] args) {
 		// Test Suite Fourmis
+		System.out.println("\nTEST SUITE FOURMIS");
 		testFourmis();
 				
-		// Test InsertionInteger
-		//testInsertII();
-		//testCreateArrayII();
+		// Test Insertion Integer
+		System.out.println("\nTEST INSERTION INTEGER");
+		testInsertII();
+		testCreateArrayII();
 
-		// Test InsertionPair
-		//testInsertIP();
-		//testCreateArrayIP();
-		//testCreateArrayFromFileIP();
+		// Test Insertion Pair
+		System.out.println("\nTEST INSERTION PAIR");
+		testInsertIP();
+		testCreateArrayIP();
+		testCreateArrayFromFileIP();
 	}
 
 }

@@ -19,6 +19,7 @@
 package fr.istic.prg1.tp3;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InsertionPair {
@@ -54,13 +55,17 @@ public class InsertionPair {
 	 * @param scanner
 	 */
 	public void createArray(Scanner scanner) {
-		int e1 = scanner.nextInt(), e2 = scanner.nextInt();
-		while (e1 != END_MARKER && e2 != END_MARKER) {
-			insert(new Pair(e1, e2));
-			e1 = scanner.nextInt();
-			if (e1 != END_MARKER) {
-				e2 = scanner.nextInt();
+		try {
+			int e1 = scanner.nextInt(), e2 = scanner.nextInt();
+			while (e1 != END_MARKER && e2 != END_MARKER) {
+				insert(new Pair(e1, e2));
+				e1 = scanner.nextInt();
+				if (e1 != END_MARKER) {
+					e2 = scanner.nextInt();
+				}
 			}
+		} catch (InputMismatchException e) {
+			System.out.println("\nATTENTION: L'une de vos saisies n'est pas un entier.");
 		}
 	}
 	

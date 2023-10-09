@@ -49,7 +49,7 @@ public class Pair implements Comparable<Pair> {
 	}
 
 	public boolean lessThanZero() {
-		return x <= 0 || y <= 0;
+		return x < 0 || y < 0;
 	}
 
 	public Pair copyOf() {
