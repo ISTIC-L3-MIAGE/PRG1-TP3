@@ -88,24 +88,23 @@ public class InsertionInteger {
 	 */
 	public boolean insert(int value) {
 		// Cas particulier: array est complètement rempli ou value <= 0
-		if (size == SIZE_MAX || value < 0) {
-			return false;
-		}
-
+		if (size == SIZE_MAX || value <= 0) { return false; }
+		
 		// Recherche de value dans array
 		int i = 0;
-		while (i <= size) {
-			if (array[i] == value) {
-				return false;
-			}
-			// Insertion et tri si value n'a pas été trouvé dans array
-			if (array[i] > value || i == size) {
-				int temp = array[i];
-				array[i] = value;
-				value = temp;
-			}
+		while (i < size && array[i] < value) {
 			i++;
 		}
+		
+		if (array[i] == value) { 
+			return false;
+		}
+		
+		// Insertion et tri si value n'a pas été trouvé dans array
+		for (int j = size; j > i; j--) {
+			array[j] = array[j-1];
+		}
+		array[i] = value;
 		size += 1;
 		return true;
 	}
