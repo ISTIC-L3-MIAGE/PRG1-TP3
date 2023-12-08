@@ -56,7 +56,11 @@ public class InsertionPair {
 	 */
 	public void createArray(Scanner scanner) {
 		try {
-			int e1 = scanner.nextInt(), e2 = scanner.nextInt();
+			int e1 = scanner.nextInt();
+			int e2;
+			if (e1 != END_MARKER) {
+				e2 = scanner.nextInt();
+			}
 			while (e1 != END_MARKER && e2 != END_MARKER) {
 				insert(new Pair(e1, e2));
 				e1 = scanner.nextInt();
@@ -90,26 +94,25 @@ public class InsertionPair {
 	 * @return false si pair appartient à array[0..size-1] ou si array est
 	 *         complètement rempli; true si pair n’appartient pas à array[0..size-1]
 	 */
-	public boolean insert(Pair pair) {
+	public boolean insert(Pair value) {
 		// Cas particulier: array est complètement rempli ou value <= 0
-		if (size == SIZE_MAX || pair.lessThanZero()) {
-			return false;
-		}
-
+		if (size == SIZE_MAX || value.lessThanZero()) { return false; }
+		
 		// Recherche de value dans array
 		int i = 0;
-		while (i <= size) {
-			if (pair.equals(array[i])) {
-				return false;
-			}
-			// Insertion et tri si value n'a pas été trouvé dans array
-			if ((array[i] != null && array[i].compareTo(pair) > 0) || i == size) {
-				Pair temp = array[i];
-				array[i] = pair;
-				pair = temp;
-			}
+		while (i < size && array[i].less(value)) {
 			i++;
 		}
+				
+		if (array[i] != null && array[i].equals(value)) { 
+			return false;
+		}
+		
+		// Insertion et tri si value n'a pas été trouvé dans array
+		for (int j = size; j > i; j--) {
+			array[j] = array[j-1];
+		}
+		array[i] = value;
 		size += 1;
 		return true;
 	}
