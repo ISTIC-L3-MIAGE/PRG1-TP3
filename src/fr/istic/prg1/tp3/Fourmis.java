@@ -14,17 +14,21 @@ public class Fourmis {
 	 * @return le terme suivant de la suite des fourmis
 	 */
 	public static String next(String ui) {
-		String resultat = "";
+		StringBuilder resultat = new StringBuilder();
 		// On compte la plus grande suite d'un nombre
 		int compteur = 1;
-		for (int i = 0; i < ui.length() - 1; i++) {
+		int i;
+		for (i = 0; i < ui.length() - 1; i++) {
 			if (ui.charAt(i) == ui.charAt(i + 1)) {
 				compteur += 1;
 			} else {
-				resultat = resultat + compteur + ui.charAt(i);
+				resultat.append(compteur);
+				resultat.append(ui.charAt(i));
 				compteur = 1;
 			}
 		}
-		return resultat + compteur + ui.charAt(ui.length() - 1);
+		resultat.append(compteur);
+		resultat.append(ui.charAt(i));
+		return resultat.toString();
 	}
 }
